@@ -20,7 +20,8 @@ public class ClientController {
 
     private Scanner sc = new Scanner(System.in);
 
-    private ArrayList<Object> user;
+    private ArrayList<String> user = new ArrayList<String>();
+    
     private Boolean isAuth = false;
 
     private String username;
@@ -29,6 +30,9 @@ public class ClientController {
     private String command;
 
     public void run() {
+
+        // Set role of user as admin for bussiness logic mockup
+        user.add("admin");
 
         while (true) {
             System.out.println(view.line);
@@ -57,8 +61,8 @@ public class ClientController {
                         System.out.print("Enter your password : ");
                         password = sc.nextLine();
 
-                        // Login sequence
                         context = new Context(auth);
+                        // Login sequence
                         if (context.execute(username, password)) {
                             System.out.println("Login success.");
                             isAuth = true;
@@ -81,23 +85,55 @@ public class ClientController {
                             System.out.println("Login fail.");
                         }
                     }
+                } else if (command.equals("register")) {
+                    System.out.print("Enter your name : ");
+                    username = sc.nextLine();
+                    System.out.print("Enter your surname : ");
+                    String surname = sc.nextLine();
+                    System.out.print("Enter your password : ");
+                    password = sc.nextLine();
+                    System.out.print("Enter your telephone number : ");
+                    String telephone = sc.nextLine();
+                    
+                    // Strategy choose context
+                    RegisterController register = new RegisterController();
+                    register.set(username, surname, telephone, password);
+                    context = new Context(register);
+                    if(context.execute()) {
+                        System.out.println("Register success..");
+                    } else {
+                        System.out.println("Register fail..");
+                    }
                 }
             } else { // If user is authenticated, continue the flow.
 
                 System.out.println(view.line);
-                view.welcome(username);
+                view.welcomeUser(username);
                 System.out.println(view.line);
 
                 System.out.println("You are authed.");
-                System.out.print(view.command);
-                command = sc.nextLine();
 
+                // Admin scope
+                if (user.get(0).equals("admin")) {
+                    view.adminCommand();
+                    System.out.print(view.command);
+                    command = sc.nextLine();
+                    if (command.equals("Add room")) {
+                        //
+                    }
+                    if (command.equals("Promotion")) {
+                        // 
+                    }
+                }
             }
 
             if (command.equals("exit") || command.equals("q")) {
                 System.out.println("Exiting site...");
                 break;
             }
+
+            // Clear command
+            command = "";
             System.out.println();
         }
     }

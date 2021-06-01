@@ -11,18 +11,30 @@ public class MainView {
 
     }
 
-    public void welcome(String username) {
-
+    public void welcomeUser(String username) {
         System.out.printf("= Welcome, " + "%s", username + " =");
-        for (int i = 0; i < (width - (username.length() + 13)); i++) {
-            System.out.print("=");
-        }
     }
 
     public void chooseLogin() {
         System.out.println("Login with ?");
         System.out.println("1. Our account");
         System.out.println("2. Google");
-        System.out.println("3. Facebook");
+    }
+
+    public void option() {
+        System.out.println("What do you want to do?");
+        System.out.println("1. ");
+    }
+
+    public void adminCommand() {
+        System.out.println("Admin's command lists");
+        System.out.println("\"users\"   see all users");
+        System.out.println("\"promotion\"   create promotion");
+    }
+
+    public void userCommand(){
+        System.out.println("User's command lists");
+        System.out.println("\"reserve room\"   see all users");
+        System.out.println("\"payment method\"   create promotion");
     }
 }

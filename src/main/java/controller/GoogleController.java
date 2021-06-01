@@ -20,8 +20,9 @@ public class GoogleController implements Controller {
     }
 
     @Override
-    public void execute() {
+    public Boolean execute() {
         // TODO Auto-generated method stub
+        return true;
 
     }
 

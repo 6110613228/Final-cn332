@@ -18,8 +18,9 @@ public class AuthController implements Controller {
     }
 
     @Override
-    public void execute() {
+    public Boolean execute() {
         
+        return true;
     }
     
     @Override

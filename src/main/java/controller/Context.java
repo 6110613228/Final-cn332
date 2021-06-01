@@ -11,8 +11,8 @@ public class Context {
         this.controller = controller;
     }
 
-    public void execute() {
-        controller.execute();
+    public Boolean execute() {
+        return controller.execute();
     }
 
     public Boolean execute(Object a, Object b) {

@@ -5,6 +5,6 @@ package controller;
  */
 interface Controller {
 
-    public void execute();
+    public Boolean execute();
     public Boolean execute(Object a, Object b);
 }
