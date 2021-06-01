@@ -12,6 +12,8 @@ import java.security.GeneralSecurityException;
  * UserModel
  * 
  * Provide all Model's sub classes a connection with DB.
+ * 
+ * Template
  */
 public abstract class Model {
 

@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Database
  * 
- * Singleton
+ * Act as a Singleton
  */
 public class DB {
 
